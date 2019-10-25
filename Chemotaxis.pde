@@ -15,13 +15,16 @@ Food piece;
  void draw()   
  {    
  	background(255);
+ 	piece.move();
+ 	piece.show();
  	for(int i = 0; i < colony.length; i++)
  	{
  		colony[i].move();
  		colony[i].show();
+
  	}
- 	piece.move();
- 	piece.show();
+
+
  }  
  class Bacteria    
  {     
@@ -33,18 +36,10 @@ Food piece;
  	}
  	void move()
  	{
- 		if(dist(colony.myX,piece.myX,colony.myY,piece.myY < 100)
+ 		if(dist(colony[i].myX,colony[i].myY,piece.myX,piece.myY) < 50)
  		{
- 			if(mouseX > myX)
- 				myX += (int)(Math.random()*10)+1;
- 			if(mouseX < myX)
- 				myX += (int)(Math.random()*-11);
-  			if(mouseY > myX)
- 				myY += (int)(Math.random()*10)+1;
-  			if(mouseY < myX)
- 				myY += (int)(Math.random()*10)+1;
+ 			System.out.println("1");
  		}
-
  		if(myX >= 40 && myX <= 760)
  			myX += (int)(Math.random()*21)-10;
  		if(myY >= 40 && myY <= 560)
