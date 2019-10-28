@@ -1,5 +1,5 @@
 Bacteria[] colony; 
-Food piece;
+
  void setup()   
  {     
  	size(800,600);
@@ -10,20 +10,19 @@ Food piece;
  	{
  		colony[i] = new Bacteria(); 
  	}
- 	piece = new Food();
  }   
  void draw()   
- {    
- 	background(255);
- 	piece.move();
- 	piece.show();
+ {  
+ 	background(0);  
  	for(int i = 0; i < colony.length; i++)
  	{
  		colony[i].move();
  		colony[i].show();
 
  	}
-
+ 	//food
+ 	fill(255,255,0);
+ 	ellipse(mouseX,mouseY,50,50);
 
  }  
  class Bacteria    
@@ -35,10 +34,17 @@ Food piece;
  		myY = 300;
  	}
  	void move()
- 	{
- 		if(dist(colony[i].myX,colony[i].myY,piece.myX,piece.myY) < 50)
+ 	{ 
+ 		if(dist(myX,myY,mouseX,mouseY) < 100)
  		{
- 			System.out.println("1");
+ 			if(myX < mouseX)
+ 				myX += (int)(Math.random()*10)+1;
+ 			if(myX > mouseX)
+ 				myX += (int)(Math.random()*10)-10;
+ 			if(myY < mouseY)
+ 				myY += (int)(Math.random()*10)+1;
+ 			if(myY > mouseY)
+ 				myY += (int)(Math.random()*10)-10;
  		}
  		if(myX >= 40 && myX <= 760)
  			myX += (int)(Math.random()*21)-10;
@@ -61,22 +67,4 @@ Food piece;
  		ellipse(myX,myY,15,15);
  	}   
  }   
- class Food
- {
- 	int myX, myY;
- 	Food()
- 	{
- 		myX = 200;
- 		myY = 300;
- 	}
- 	void move()
- 	{
-  		myX = mouseX;
- 		myY = mouseY;		
- 	}
- 	void show()
- 	{
- 		fill(255,255,0);
- 		ellipse(myX,myY,75,75);
- 	}
- } 
+
